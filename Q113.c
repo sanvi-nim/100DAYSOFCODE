@@ -1,0 +1,43 @@
+// to Find the Kth Smallest Element in an Array
+#include <stdio.h>
+
+int main()
+{
+    int a[100], n, k, i, j, temp;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    printf("Enter array elements:\n");
+
+    for(i = 0; i < n; i++)
+    {
+        scanf("%d", &a[i]);
+    }
+
+    printf("Enter value of k: ");
+    scanf("%d", &k);
+
+    if(k < 1 || k > n)
+    {
+        printf("Invalid value of k");
+        return 0;
+    }
+
+    for(i = 0; i < n - 1; i++)
+    {
+        for(j = i + 1; j < n; j++)
+        {
+            if(a[i] > a[j])
+            {
+                temp = a[i];
+                a[i] = a[j];
+                a[j] = temp;
+            }
+        }
+    }
+
+    printf("Kth smallest element = %d", a[k - 1]);
+
+    return 0;
+}
